@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nouveau mot de passe — CapoQuest</title>
+<meta name="description" content="Ouvre CapoQuest pour choisir ton nouveau mot de passe.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div class="in"><a class="brand" href="index.html">CapoQuest</a><div class="tag">Prépare le concours de Caporal SPP, QCM après QCM.</div></div></header>
+<main>
+<h1>Choisis ton nouveau mot de passe</h1>
+<div id="ok">
+<p class="intro">Appuie sur le bouton pour ouvrir CapoQuest et choisir ton nouveau mot de passe.</p>
+<p><a id="open" class="card" href="capoquest://reset-password">Ouvrir CapoQuest<small>Depuis le téléphone où l’application est installée.</small></a></p>
+<p class="meta">Rien ne se passe ? Ouvre cet e-mail depuis le téléphone sur lequel CapoQuest est installée, puis appuie à nouveau sur le lien.</p>
+</div>
+<div id="ko" hidden>
+<p class="intro">Ce lien a expiré ou a déjà été utilisé.</p>
+<p>Ouvre CapoQuest, touche « Mot de passe oublié ? » sur l’écran de connexion et demande un nouveau lien.</p>
+</div>
+<script>
+(function () {
+  var hash = window.location.hash || '';
+  if (/error=|error_description=/.test(hash)) {
+    document.getElementById('ok').hidden = true;
+    document.getElementById('ko').hidden = false;
+    return;
+  }
+  var target = 'capoquest://reset-password' + hash;
+  document.getElementById('open').setAttribute('href', target);
+  setTimeout(function () { window.location.href = target; }, 400);
+})();
+</script>
+</main>
+<footer><div class="in">© CapoQuest — application indépendante, non affiliée à la sécurité civile ni aux SDIS. Dernière mise à jour : 17 novembre 2026.</div></footer>
+</body>
+</html>
