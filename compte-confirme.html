@@ -11,10 +11,25 @@
 <body>
 <header><div class="in"><a class="brand" href="index.html">CapoQuest</a><div class="tag">Prépare le concours de Caporal SPP, QCM après QCM.</div></div></header>
 <main>
+<div id="ok">
 <h1>Adresse e-mail confirmée ✅</h1>
 <p class="intro">Ton compte CapoQuest est activé. Retourne dans l’application et connecte-toi pour commencer à réviser.</p>
 <p><a class="card" href="capoquest://">Ouvrir l’application CapoQuest<small>Si l’application est installée sur ce téléphone.</small></a></p>
 <p class="meta">Tu as ouvert ce lien sur un ordinateur ? Reprends simplement ton téléphone : tu peux te connecter directement.</p>
+</div>
+<div id="ko" hidden>
+<h1>Lien invalide ou expiré ⚠️</h1>
+<p class="intro">Ton adresse n’a pas pu être confirmée : le lien a expiré ou a déjà été utilisé (certaines messageries l’ouvrent automatiquement pour l’analyser). Retourne dans l’application et demande un nouvel e-mail de confirmation, ou essaie de te connecter : ton compte est peut-être déjà activé.</p>
+</div>
+<script>
+(function () {
+  var h = location.hash + '&' + location.search;
+  if (/error=|error_code=|error_description=/.test(h)) {
+    document.getElementById('ok').hidden = true;
+    document.getElementById('ko').hidden = false;
+  }
+})();
+</script>
 </main>
 <footer><div class="in">© CapoQuest — application indépendante, non affiliée à la sécurité civile ni aux SDIS. Dernière mise à jour : 17 novembre 2026.</div></footer>
 </body>
